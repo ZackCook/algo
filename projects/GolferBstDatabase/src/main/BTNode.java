@@ -70,7 +70,7 @@ public class BTNode<E> {
     }
 
     /**
-     * Count the number of nodes in a binary tree.
+     * Count the number of nodes in the binary tree rooted at this node.
      *
      * @param <CODE>root</CODE> a reference to the root of a binary tree (which may be
      *                          an empty tree where <CODE>source</CODE> is null)
