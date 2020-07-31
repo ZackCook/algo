@@ -43,9 +43,9 @@ public class BTNode<E> {
      *                                  This node contains the specified data and links to its children.
      **/
     public BTNode(E initialData, BTNode<E> initialLeft, BTNode<E> initialRight) {
-        data = initialData;
-        left = initialLeft;
-        right = initialRight;
+        this.data = initialData;
+        this.left = initialLeft;
+        this.right = initialRight;
     }
 
     /**
@@ -93,7 +93,7 @@ public class BTNode<E> {
      * @return the data from this node
      **/
     public E getData() {
-        return data;
+        return this.data;
     }
 
     /**
@@ -104,7 +104,7 @@ public class BTNode<E> {
      *                             The data of this node has been set to <CODE>newData</CODE>.
      **/
     public void setData(E newData) {
-        data = newData;
+        this.data = newData;
     }
 
     /**
@@ -115,7 +115,7 @@ public class BTNode<E> {
      * is no left child)
      **/
     public BTNode<E> getLeft() {
-        return left;
+        return this.left;
     }
 
     /**
@@ -129,7 +129,7 @@ public class BTNode<E> {
      *                             this node.
      **/
     public void setLeft(BTNode<E> newLeft) {
-        left = newLeft;
+        this.left = newLeft;
     }
 
     /**
@@ -141,10 +141,10 @@ public class BTNode<E> {
      * following left links.
      **/
     public E getLeftmostData() {
-        if (left == null)
-            return data;
+        if (this.left == null)
+            return this.data;
         else
-            return left.getLeftmostData();
+            return this.left.getLeftmostData();
     }
 
     /**

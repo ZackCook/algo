@@ -6,6 +6,8 @@ package main;
 // exercise from Section 9.5 of "Data Structures and Other Objects Using Java"
 
 
+import java.util.Scanner;
+
 /******************************************************************************
  * This class is a homework assignment;
  * An <CODE>TreeBag</CODE> is a collection of int numbers.
@@ -45,10 +47,32 @@ public class TreeBag<E extends Comparable> implements Cloneable
      * @exception OutOfMemoryError
      *   Indicates insufficient memory a new BTNode.
      **/
-    public void add(E element)
-    {
-        // Implemented by student.
-    }
+    public void add(E element) {
+        if(this.root == null){
+            this.root = new BTNode<E>(element,null,null);
+        }else {
+
+            BTNode<E> cursor = this.root;
+            BTNode<E> cParent = null;
+
+            while (cursor!=null) {
+                cParent = cursor;
+                if (element.compareTo(cursor.getData()) == 1) {
+                    //go right
+                    cursor = cursor.getRight();
+                } else {
+                    //go left
+                    cursor = cursor.getLeft();
+                }
+            }//end while
+
+            if (element.compareTo(cParent.getData()) == 1) {
+                cParent.setRight(new BTNode<E>(element, null, null));
+            } else {
+                cParent.setLeft(new BTNode<E>(element, null, null));
+            }
+        }
+    }//end add()
 
     /**
      * Retrieve location of a specified element from this bag.
@@ -62,11 +86,10 @@ public class TreeBag<E extends Comparable> implements Cloneable
      *   the method returns null.
      *   The bag remains unchanged.
      **/
-    public E retrieve(E target)
-    {
-        // Student will replace this return statement with their own code:
-        return target;
-    }
+    public E retrieve(E target) {
+        //todo
+
+    }//end retrieve
 
 
     /**
@@ -78,10 +101,12 @@ public class TreeBag<E extends Comparable> implements Cloneable
      *   <CODE>target</CODE> has been removed and the method returns true.
      *   Otherwise the bag remains unchanged and the method returns false.
      **/
-    public boolean remove(E target)
-    {
-        // Student will replace this return statement with their own code:
-        return false;
+    public boolean remove(E target) {
+        boolean result = false;
+
+        //todo
+
+        return result;
     }
 
     /**
@@ -97,7 +122,7 @@ public class TreeBag<E extends Comparable> implements Cloneable
     public void display()
     {
         // Student will replace this with their own code:
-
+        //todo
     }
 
     /**
@@ -131,6 +156,7 @@ public class TreeBag<E extends Comparable> implements Cloneable
     {  // Clone an IntTreeBag object.
         // Student will replace this return statement with their own code:
         return null;
+        //todo
     }
 
     /**
@@ -143,7 +169,7 @@ public class TreeBag<E extends Comparable> implements Cloneable
      **/
     public int countOccurrences(E target)
     {
-        // Student will replace this return statement with their own code:
+        //todo
         return 0;
     }
 
@@ -177,7 +203,7 @@ public class TreeBag<E extends Comparable> implements Cloneable
      **/
     public void addAll(TreeBag<E> addend)
     {
-        // Implemented by student.
+        //todo
     }
 
     /**
@@ -199,6 +225,16 @@ public class TreeBag<E extends Comparable> implements Cloneable
     {
         // Student will replace this return statement with their own code:
         return null;
+    }
+
+    public static void main(String[] args){
+        TreeBag<String> test = new TreeBag<>();
+        //test.displayAsTree();
+        test.add("Apple");
+        test.add("banana");
+        //test.add("asparagus");
+        //test.add("carrot");
+        test.displayAsTree();
     }
 
 }

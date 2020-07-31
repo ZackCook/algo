@@ -14,6 +14,13 @@ public class Golfer implements Comparable<Golfer>{
         this.handicap = h;
     }
 
+    public Golfer(String l){
+        this.lastName = l;
+        this.numberOfRounds = -1;
+        this.avgScore = -1;
+        this.handicap = -1;
+    }
+
     public String getLastName() {
         return lastName;
     }
@@ -51,17 +58,33 @@ public class Golfer implements Comparable<Golfer>{
      */
     @Override
     public int compareTo(Golfer o) {
-        return 0;
+        int result = 0;
+        String oName = o.getLastName().toLowerCase();
+        char oLetter = oName.charAt(0);
+
+        String thisName = this.getLastName().toLowerCase();
+        char thisLetter = thisName.charAt(0);
+
+        if( oLetter > thisLetter){
+            result = -1;
+        }
+        else if (oLetter < thisLetter){
+            result = 1;
+        }
+
+        return result;
     }
 
     @Override
     public String toString() {
-        return "Golfer{" +
-                "lastName='" + lastName + '\'' +
-                ", numberOfRounds=" + numberOfRounds +
-                ", avgScore=" + avgScore +
-                ", handicap=" + handicap +
-                '}';
+        return this.lastName;
+    }
+
+    public static void main(String[] args){
+        Golfer g = new Golfer("a");
+        Golfer g2 = new Golfer("b");
+
+        System.out.println(g.compareTo(g2));
     }
 
 
